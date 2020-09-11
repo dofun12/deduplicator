@@ -1,5 +1,7 @@
 package org.lemanoman.deduplicator;
 
+import com.intellij.uiDesigner.core.GridConstraints;
+import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.jgoodies.forms.layout.CellConstraints;
 import com.jgoodies.forms.layout.FormLayout;
 
@@ -77,23 +79,27 @@ public class GUI {
      */
     private void $$$setupUI$$$() {
         panel1 = new JPanel();
-        panel1.setLayout(new FormLayout("fill:max(d;4px):noGrow,left:4dlu:noGrow,fill:d:grow", "center:d:noGrow,top:4dlu:noGrow,center:d:grow,top:4dlu:noGrow,center:max(d;4px):noGrow"));
-        final JScrollPane scrollPane1 = new JScrollPane();
-        CellConstraints cc = new CellConstraints();
-        panel1.add(scrollPane1, cc.xyw(1, 3, 3, CellConstraints.FILL, CellConstraints.FILL));
-        textArea1 = new JTextArea();
-        scrollPane1.setViewportView(textArea1);
-        dedupButton = new JButton();
-        dedupButton.setText("Dedup!!");
-        panel1.add(dedupButton, cc.xy(3, 5, CellConstraints.RIGHT, CellConstraints.DEFAULT));
-        infoLabel = new JLabel();
-        infoLabel.setText("Label");
-        panel1.add(infoLabel, cc.xy(1, 5));
+        panel1.setLayout(new GridLayoutManager(1, 1, new Insets(10, 10, 10, 10), -1, -1));
+        final JPanel panel2 = new JPanel();
+        panel2.setLayout(new FormLayout("fill:d:noGrow,left:4dlu:noGrow,fill:d:grow", "center:d:noGrow,top:4dlu:noGrow,center:d:grow,top:4dlu:noGrow,center:max(d;4px):noGrow"));
+        panel1.add(panel2, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         final JLabel label1 = new JLabel();
         Font label1Font = this.$$$getFont$$$("Courier New", Font.PLAIN, 18, label1.getFont());
         if (label1Font != null) label1.setFont(label1Font);
         label1.setText("Text:");
-        panel1.add(label1, cc.xy(1, 1));
+        CellConstraints cc = new CellConstraints();
+        panel2.add(label1, cc.xy(1, 1));
+        dedupButton = new JButton();
+        dedupButton.setText("Dedup!!");
+        panel2.add(dedupButton, cc.xy(3, 5, CellConstraints.RIGHT, CellConstraints.DEFAULT));
+        final JScrollPane scrollPane1 = new JScrollPane();
+        panel2.add(scrollPane1, cc.xyw(1, 3, 3, CellConstraints.FILL, CellConstraints.FILL));
+        textArea1 = new JTextArea();
+        textArea1.setText("");
+        scrollPane1.setViewportView(textArea1);
+        infoLabel = new JLabel();
+        infoLabel.setText("Label");
+        panel2.add(infoLabel, cc.xy(1, 5));
     }
 
     /**
